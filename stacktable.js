@@ -121,14 +121,14 @@
           // then iterate through the key/values
           $(this).find('td,th').each(function(cellIndex) {
             if (cellIndex === headIndex) {
-              headMarkup = '<tr class="'+ tr_class+'"><th class="st-head-row" colspan="2">'+$(this).html()+'</th></tr>';
+              headMarkup = '<tr class="'+ tr_class+'"><th class="st-head-row" colspan="2" scope="col">'+$(this).html()+'</th></tr>';
             } else {
               if ($(this).html() !== ''){
                 bodyMarkup += '<tr class="' + tr_class +'">';
                 if ($topRow.find('td,th').eq(cellIndex).html()){
-                  bodyMarkup += '<td class="st-key">'+$topRow.find('td,th').eq(cellIndex).html()+'</td>';
+                  bodyMarkup += '<th class="st-key" scope="row">'+$topRow.find('td,th').eq(cellIndex).html()+'</th>';
                 } else {
-                  bodyMarkup += '<td class="st-key"></td>';
+                  bodyMarkup += '<th class="st-key" scope="row"></th>';
                 }
                 bodyMarkup += '<td class="st-val '+$(this).prop('class')  +'">'+$(this).html()+'</td>';
                 bodyMarkup += '</tr>';
