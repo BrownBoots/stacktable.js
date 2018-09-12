@@ -216,7 +216,7 @@
             tempRows = tb.find('.st-head-row-main').eq(i).nextAll().addBack();
           }
           tempTable.append(tempRows.clone());
-          tempTable.addClass('stacktable-' + i).children().wrapAll('<tbody></tbody>');
+          tempTable.addClass('stacktable-' + i);
           $table.before(tempTable);
         }
       } else {
