@@ -38,7 +38,7 @@
       $table.addClass('stacktable large-only');
       $caption = $table.find("caption").clone();
       $topRow = $table.find('tr').eq(0);
-      
+
       // avoid duplication when paginating
       $table.siblings().filter('.small-only').remove();
 
@@ -162,6 +162,7 @@
 
     return $tables.each(function() {
       var $table = $(this);
+      var $caption = $table.find("caption").clone();
       var num_cols = $table.find('tr').eq(0).find('td,th').length; //first table <tr> must not contain colspans, or add sum(colspan-1) here.
       if(num_cols<3) //stackcolumns has no effect on tables with less than 3 columns
         return;
@@ -215,11 +216,13 @@
           } else {
             tempRows = tb.find('.st-head-row-main').eq(i).nextAll().addBack();
           }
+          tempTable.prepend($caption.clone());
           tempTable.append(tempRows.clone());
           tempTable.addClass('stacktable-' + i);
           $table.before(tempTable);
         }
       } else {
+        $stackcolumns.prepend($caption);
         $stackcolumns.append($(tb));
         $table.before($stackcolumns);
       }
